@@ -1,0 +1,108 @@
+/* ============================================================
+   Mahalaya — The Eternal Return
+   Global Design System
+   ============================================================ */
+
+/* --- Fonts & CSS Framework --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+Bengali:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* --- Design tokens --- */
+:root {
+  --charcoal:     #100D0C;
+  --charcoal-mid: #1A1513;
+  --charcoal-light:#28221F;
+  --crimson:      #7E201E;
+  --crimson-light:#A8302E;
+  --gold:         #C08A38;
+  --gold-light:   #D4A855;
+  --gold-glow:    rgba(192, 138, 56, 0.35);
+  --ivory:        #EDE0C7;
+  --ivory-dim:    rgba(237, 224, 199, 0.75);
+  --muted-text:   #B6A99A;
+  --smoke:        rgba(16, 13, 12, 0.65);
+
+  --font-bengali: 'Noto Serif Bengali', 'Tiro Bangla', serif;
+  --font-serif:   'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Cormorant Garamond', Georgia, serif;
+
+  --transition-fast:   150ms ease;
+  --transition-medium: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   800ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --player-h: 130px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --player-h: 145px;
+  }
+}
+
+/* --- Reset & base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--charcoal);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--charcoal); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* --- Utility --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Alpana pattern (subtle decorative background) --- */
+.alpana-bg {
+  position: relative;
+}
+.alpana-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(192,138,56,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(126,32,30,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}

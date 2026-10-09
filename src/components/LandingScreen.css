@@ -1,0 +1,263 @@
+.landing {
+  position: relative;
+  width: 100vw;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- Background image --- */
+.landing__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.landing__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.7) brightness(0.55);
+  transform: scale(1.05);
+  animation: bgDrift 20s ease-in-out infinite alternate;
+}
+@keyframes bgDrift {
+  from { transform: scale(1.05) translate(0, 0); }
+  to   { transform: scale(1.08) translate(-1%, -0.5%); }
+}
+.landing__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center 60%, transparent 0%, rgba(23,21,20,0.6) 70%);
+}
+.landing__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(23,21,20,0.4) 0%,
+    rgba(23,21,20,0.1) 30%,
+    rgba(23,21,20,0.15) 70%,
+    rgba(23,21,20,0.9) 100%
+  );
+}
+
+/* --- Particles --- */
+.landing__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0;
+  animation: particleFloat 8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.7s);
+  left: calc(var(--i) * 8.5% + 2%);
+  top: 80%;
+}
+@keyframes particleFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-60vh) scale(1.2); }
+}
+
+/* --- Content --- */
+.landing__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Ornament */
+.landing__ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--gold);
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+}
+.ornament-line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.7;
+}
+.ornament-symbol {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  animation: goldPulse 3s ease-in-out infinite;
+}
+@keyframes goldPulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 12px var(--gold-glow); }
+  50%       { opacity: 0.7; text-shadow: 0 0 4px var(--gold-glow); }
+}
+
+/* Eyebrow */
+.landing__eyebrow {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* Title */
+.landing__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  line-height: 1.1;
+}
+.landing__title-bn {
+  font-family: var(--font-bengali);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 600;
+  color: var(--ivory);
+  text-shadow: 0 0 60px var(--gold-glow), 0 2px 8px rgba(0,0,0,0.8);
+  animation: titleReveal 1.5s ease forwards;
+  opacity: 0;
+}
+@keyframes titleReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.landing__title-divider {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--gold);
+  opacity: 0.7;
+  animation: titleReveal 1.5s 0.3s ease forwards;
+  opacity: 0;
+}
+.landing__title-en {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ivory-dim);
+  letter-spacing: 0.08em;
+  animation: titleReveal 1.5s 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Tagline */
+.landing__tagline {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  font-style: italic;
+  color: var(--ivory-dim);
+  line-height: 1.6;
+  max-width: 480px;
+  animation: titleReveal 1.5s 0.7s ease forwards;
+  opacity: 0;
+}
+
+/* Meta */
+.landing__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  animation: titleReveal 1.5s 0.9s ease forwards;
+}
+.landing__meta .dot { opacity: 0.4; }
+
+/* Error */
+.landing__error {
+  color: #e05;
+  font-size: 0.875rem;
+  background: rgba(200,0,50,0.1);
+  border: 1px solid rgba(200,0,50,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  max-width: 400px;
+}
+
+/* CTA button */
+.landing__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--ivory);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--transition-medium), border-color var(--transition-medium);
+  opacity: 0;
+  animation: titleReveal 1.5s 1.1s ease forwards;
+}
+.landing__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  z-index: 0;
+}
+.landing__cta:hover::before,
+.landing__cta:focus-visible::before { transform: scaleX(1); }
+.landing__cta:hover,
+.landing__cta:focus-visible { color: var(--charcoal); border-color: var(--gold); outline: none; }
+.landing__cta:focus-visible { box-shadow: 0 0 0 3px var(--gold-glow); }
+.cta-text, .cta-icon { position: relative; z-index: 1; }
+.cta-icon { font-size: 0.85rem; }
+
+/* Hint */
+.landing__hint {
+  font-size: 0.75rem;
+  color: rgba(237,224,199,0.4);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: titleReveal 1.5s 1.3s ease forwards;
+}
+
+/* Bottom ornament */
+.landing__bottom-ornament {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 200px;
+  opacity: 0.6;
+}
+.ornament-svg { width: 100%; }
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  .ornament-line { width: 40px; }
+  .landing__cta { padding: 0.85rem 2rem; font-size: 0.95rem; }
+}

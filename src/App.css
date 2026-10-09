@@ -1,0 +1,6 @@
+/* App-level layout */
+.app-root {
+  min-height: 100dvh;
+  background: var(--charcoal);
+  position: relative;
+}

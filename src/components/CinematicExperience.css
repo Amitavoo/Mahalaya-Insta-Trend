@@ -1,0 +1,30 @@
+.cinematic-experience {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--charcoal);
+  display: flex;
+  flex-direction: column;
+}
+
+.experience__main {
+  flex: 1;
+  position: relative;
+  padding-bottom: var(--player-h);
+}
+
+.experience__error {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: rgba(126,32,30,0.9);
+  color: var(--ivory);
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--crimson);
+}
